@@ -4,6 +4,10 @@
   "description": "microservice for sending an email",
   "author": "Saachi Roye",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sroye-skillgigs/micro.service.email.git"
+  },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
@@ -22,11 +26,16 @@
   "dependencies": {
     "@nestjs/common": "^5.4.0",
     "@nestjs/core": "^5.4.0",
+    "@nestjs/passport": "^5.1.0",
     "@nestjs/swagger": "^2.5.1",
+    "nest-winston": "^1.0.2",
+    "passport": "^0.4.0",
+    "passport-http-bearer": "^1.0.1",
     "reflect-metadata": "^0.1.12",
     "rimraf": "^2.6.2",
     "rxjs": "^6.2.2",
-    "typescript": "^3.0.1"
+    "typescript": "^3.0.1",
+    "winston": "^3.2.1"
   },
   "devDependencies": {
     "@nestjs/testing": "^5.1.0",
