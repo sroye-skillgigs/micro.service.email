@@ -6,6 +6,7 @@ import { AuthModule } from './auth/auth.module';
 import { EmailModule } from './email/email.module';
 import { format } from 'winston';
 import winston = require('winston');
+import { ConfigService } from './config.service';
 
 @Module({
   imports: [
@@ -15,7 +16,13 @@ import winston = require('winston');
         winston.format.timestamp(),
         winston.format.logstash(),
       ),
-      transports: [
+      transports: new ConfigService('.env').get('NODE_ENV') === 'production' || new ConfigService('.env').get('NODE_ENV') === 'release' ?
+      [
+        new winston.transports.File({
+          filename: 'micro.service.email.log',
+        }),
+      ] :
+      [
         new winston.transports.Console(),
         new winston.transports.File({
           filename: 'micro.service.email.log',
