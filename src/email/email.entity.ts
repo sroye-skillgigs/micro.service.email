@@ -1,5 +1,5 @@
 import { ApiModelProperty } from '@nestjs/swagger';
-import { Address } from "./address.entity";
+import { Address } from './address.entity';
 import { KeyValuePair } from 'src/common/keyvaluepair.entity';
 
 export class Email {
@@ -7,14 +7,14 @@ export class Email {
         description: 'Blind Carbon Copy Email Addresses',
         isArray: true,
         required: false,
-        type: Address
+        type: Address,
     })
     bccAddresses: Address[];
 
     @ApiModelProperty({
         description: 'From Email Address',
         required: false,
-        type: Address
+        type: Address,
     })
     fromAddress: Address;
 
@@ -22,21 +22,21 @@ export class Email {
         description: 'Merge Variables',
         isArray: true,
         required: false,
-        type: KeyValuePair
+        type: KeyValuePair,
     })
     mergeVars: KeyValuePair[];
 
     @ApiModelProperty({
         description: 'Subject',
         required: false,
-        type: String
+        type: String,
     })
     subject: string;
 
     @ApiModelProperty({
         description: 'Template Name',
         required: false,
-        type: String
+        type: String,
     })
     templateName: string;
 
@@ -44,7 +44,7 @@ export class Email {
         description: 'To Email Addresses',
         isArray: true,
         required: false,
-        type: Address
+        type: Address,
     })
     toAddresses: Address[];
 }

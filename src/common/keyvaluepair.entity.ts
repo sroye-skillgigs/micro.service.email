@@ -4,14 +4,14 @@ export class KeyValuePair {
     @ApiModelProperty({
         description: 'Key',
         required: false,
-        type: String
+        type: String,
     })
     key: string;
 
     @ApiModelProperty({
         description: 'Value',
         required: true,
-        type: String
+        type: String,
     })
     value: string;
 }

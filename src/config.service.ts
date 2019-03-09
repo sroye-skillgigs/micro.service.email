@@ -8,7 +8,7 @@ export interface EnvConfig {
 export class ConfigService {
     private readonly envConfig: EnvConfig;
 
-    constructor (filePath: string) {
+    constructor(filePath: string) {
         const config = dotenv.parse(fs.readFileSync(filePath));
         if (config.error) {
             throw config.error;
@@ -17,7 +17,7 @@ export class ConfigService {
         this.envConfig = config;
     }
 
-    get (key: string) : string {
+    get(key: string): string {
         return this.envConfig[key];
     }
 }

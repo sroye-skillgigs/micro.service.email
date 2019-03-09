@@ -1,9 +1,9 @@
-import { Email } from "./email.entity";
+import { Email } from './email.entity';
 
 export class EmailService {
-    send (paylaod: Email): Promise<any> {
+    send(paylaod: Email): Promise<any> {
         return new Promise(resolve => {
             resolve();
-        })
+        });
     }
 }

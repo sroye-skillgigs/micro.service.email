@@ -4,14 +4,14 @@ export class Address {
     @ApiModelProperty({
         description: 'Full Name',
         required: false,
-        type: String
+        type: String,
     })
     name: string;
 
     @ApiModelProperty({
         description: 'Email Address',
         required: true,
-        type: String
+        type: String,
     })
     emailAddress: string;
 }

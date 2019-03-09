@@ -6,7 +6,7 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
-    logger: false
+    logger: false,
   });
   const config = new ConfigService('.env');
   const options = new DocumentBuilder()
@@ -16,9 +16,9 @@ async function bootstrap() {
     .addBearerAuth('', 'header', '')
     .build();
   const document = SwaggerModule.createDocument(app, options);
-  SwaggerModule.setup(process.env['SWAGGER_URL'] || config.get('SWAGGER_URL'), app, document);
+  SwaggerModule.setup(process.env.SWAGGER_URL || config.get('SWAGGER_URL'), app, document);
 
   app.useLogger(SGLogger);
-  await app.listen(process.env['PORT'] || config.get('PORT'));
+  await app.listen(process.env.PORT || config.get('PORT'));
 }
 bootstrap();
