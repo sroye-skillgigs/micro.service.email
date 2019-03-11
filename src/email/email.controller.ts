@@ -13,7 +13,8 @@ export class EmailController {
     @Get()
     @UseGuards(AuthGuard('bearer'))
     async Get(): Promise<any> {
-        this.logger.log('info', 'simple get');
+        // this.logger.log('info', 'simple get');
+        this.logger.info('simple get');
 
         return new Promise<any> (resolve => {
             resolve('all good');

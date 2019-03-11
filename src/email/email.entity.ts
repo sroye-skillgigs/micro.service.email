@@ -1,6 +1,6 @@
 import { ApiModelProperty } from '@nestjs/swagger';
 import { Address } from './address.entity';
-import { KeyValuePair } from 'src/common/keyvaluepair.entity';
+import { KeyValuePair } from './../common/keyvaluepair.entity';
 
 export class Email {
     @ApiModelProperty({

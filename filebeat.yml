@@ -1,11 +1,11 @@
 filebeat.inputs:
   - type: log
-    enabled: true
-    paths: 
-      - /usr/src/app/micro.service.email.log
-output.elasticsearch:
-  hosts: [
-    localhost:9200
-  ]
-setup.kibana:
-  host: localhost:5601
+    paths:
+      - /var/log/micro.service.email.log
+output.logstash:
+  hosts: ["logstash:5044"]
+  index: "filebeat"
+output.console:
+  pretty: true
+filebeat.modules:
+  - module: logstash

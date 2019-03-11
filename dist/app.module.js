@@ -7,13 +7,41 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const common_1 = require("@nestjs/common");
+const nest_winston_1 = require("nest-winston");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
+const auth_module_1 = require("./auth/auth.module");
+const email_module_1 = require("./email/email.module");
+const winston_1 = require("winston");
+const winston = require("winston");
+const config_service_1 = require("./config.service");
 let AppModule = class AppModule {
 };
 AppModule = __decorate([
     common_1.Module({
-        imports: [],
+        imports: [
+            nest_winston_1.WinstonModule.forRoot({
+                level: 'silly',
+                format: winston_1.format.combine(winston.format.timestamp(), winston.format.logstash()),
+                transports: new config_service_1.ConfigService('.env').get('NODE_ENV') === 'production' || new config_service_1.ConfigService('.env').get('NODE_ENV') === 'release' ?
+                    [
+                        new winston.transports.File({
+                            filename: 'micro.service.email.log',
+                        }),
+                    ] :
+                    [
+                        new winston.transports.Console(),
+                        new winston.transports.File({
+                            filename: 'micro.service.email.log',
+                        }),
+                    ],
+                defaultMeta: {
+                    applicationName: 'micro.service.email'
+                }
+            }),
+            auth_module_1.AuthModule,
+            email_module_1.EmailModule,
+        ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],
     })
