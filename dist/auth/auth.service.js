@@ -27,7 +27,7 @@ let AuthService = class AuthService {
     }
     validateUser(token) {
         return __awaiter(this, void 0, void 0, function* () {
-            this.logger.log('info', 'validate user: ' + token);
+            this.logger.info('validate user: ' + token);
             return yield new Promise(resolve => {
                 if (token) {
                     resolve(true);

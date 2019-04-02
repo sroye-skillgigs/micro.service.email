@@ -5,41 +5,43 @@ services:
     build: ./
     container_name: email
     ports: 
-      - 3000:3000
+      - 80:3000
+      - 443:3000
     volumes:
       - ./logs:/usr/src/app/logs
     environment:
       NODE_ENV: development
       PORT: 3000
-  filebeat:
-    image: docker.elastic.co/beats/filebeat:6.6.1
-    container_name: filebeat
-    volumes:
-      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml
-      - ./logs:/var/logs
-    links:
-      - logstash
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.6.1
-    container_name: elasticsearch
-    ports:
-      - 9200:9200
-    volumes:
-      - ./elasticsearch/data:/usr/share/elasticsearch/data
-  logstash:
-    image: docker.elastic.co/logstash/logstash:6.6.1
-    container_name: logstash
-    ports:
-      - 5044:5044
-    volumes:
-      - ./logstash.yml:/usr/share/logstash/config/logstash.yml
-      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
-    links:
-      - elasticsearch
-  kibana:
-    image: docker.elastic.co/kibana/kibana:6.6.1
-    container_name: kibana
-    ports: 
-      - 5601:5601
-    links:
-      - elasticsearch
+#  filebeat:
+#    image: docker.elastic.co/beats/filebeat:6.6.1
+#    container_name: filebeat
+#    volumes:
+#      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml
+#      - ./logs:/usr/share/filebeat/logs
+#    links:
+#      - logstash
+#  elasticsearch:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:6.6.1
+#    container_name: elasticsearch
+#    ports:
+#      - 9200:9200
+#    volumes:
+#      - ./elasticsearch/data:/usr/share/elasticsearch/data
+#  logstash:
+#    image: docker.elastic.co/logstash/logstash:6.6.1
+#    container_name: logstash
+#    ports:
+#      - 5044:5044
+#      - 9600:9600
+#    volumes:
+#      - ./logstash.yml:/usr/share/logstash/config/logstash.yml
+#      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+#    links:
+#      - elasticsearch
+#  kibana:
+#    image: docker.elastic.co/kibana/kibana:6.6.1
+#    container_name: kibana
+#    ports: 
+#      - 5601:5601
+#    links:
+#      - elasticsearch

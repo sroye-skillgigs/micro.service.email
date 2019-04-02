@@ -26,13 +26,13 @@ AppModule = __decorate([
                 transports: new config_service_1.ConfigService('.env').get('NODE_ENV') === 'production' || new config_service_1.ConfigService('.env').get('NODE_ENV') === 'release' ?
                     [
                         new winston.transports.File({
-                            filename: 'micro.service.email.log',
+                            filename: 'logs/micro.service.email.log',
                         }),
                     ] :
                     [
                         new winston.transports.Console(),
                         new winston.transports.File({
-                            filename: 'micro.service.email.log',
+                            filename: 'logs/micro.service.email.log',
                         }),
                     ],
                 defaultMeta: {

@@ -32,7 +32,7 @@ let HttpStrategy = class HttpStrategy extends passport_1.PassportStrategy(passpo
     }
     validate(token) {
         return __awaiter(this, void 0, void 0, function* () {
-            this.logger.log('info', 'test');
+            this.logger.info('validate user');
             const validated = yield this.authService.validateUser(token);
             if (!validated) {
                 throw new common_1.UnauthorizedException();

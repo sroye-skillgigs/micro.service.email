@@ -1,11 +1,8 @@
 filebeat.inputs:
   - type: log
     paths:
-      - /var/log/micro.service.email.log
+      - /usr/share/filebeat/logs/micro.service.email.log
 output.logstash:
   hosts: ["logstash:5044"]
-  index: "filebeat"
-output.console:
-  pretty: true
 filebeat.modules:
   - module: logstash
