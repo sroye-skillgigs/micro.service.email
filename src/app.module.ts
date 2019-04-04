@@ -11,7 +11,7 @@ import { ConfigService } from './config.service';
 @Module({
   imports: [
     WinstonModule.forRoot({
-      level: 'silly',
+      level: 'info',
       format: format.combine(
         winston.format.timestamp(),
         winston.format.logstash(),
@@ -19,18 +19,18 @@ import { ConfigService } from './config.service';
       transports: new ConfigService('.env').get('NODE_ENV') === 'production' || new ConfigService('.env').get('NODE_ENV') === 'release' ?
       [
         new winston.transports.File({
-          filename: 'logs/micro.service.email.log',
+          filename: './logs/micro.service.email.log',
         }),
       ] :
       [
         new winston.transports.Console(),
         new winston.transports.File({
-          filename: 'logs/micro.service.email.log',
+           filename: './logs/micro.service.email.log',
         }),
       ],
       defaultMeta: {
-        applicationName: 'micro.service.email'
-      }
+        applicationName: 'micro.service.email',
+      },
     }),
     AuthModule,
     EmailModule,

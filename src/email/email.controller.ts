@@ -11,7 +11,7 @@ export class EmailController {
     constructor(@Inject('winston') private readonly logger: Logger) {}
 
     @Get()
-    @UseGuards(AuthGuard('bearer'))
+    // @UseGuards(AuthGuard('bearer'))
     async Get(): Promise<any> {
         // this.logger.log('info', 'simple get');
         this.logger.info('simple get');

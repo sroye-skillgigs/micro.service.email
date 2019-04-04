@@ -1,5 +1,6 @@
 filebeat.inputs:
   - type: log
+    enabled: true
     paths:
       - /usr/share/filebeat/logs/micro.service.email.log
 output.logstash:
